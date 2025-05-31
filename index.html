@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title>Rating App</title>
+		<style>
+			*{font-size:40px; font-family:Cambria; text-align:center;}
+			body{background-color:lightyellow;}
+			h1{background-color:black; color:white; width:70%; margin:auto; border-radius:30px;}
+		</style>
+	</head>
+	<body>
+		<h1>Rating App</h1>
+		<br/>
+		<form onsubmit="show()">
+			<input type="number"  id="rating" placeholder="enter the rating from 1 to 5" />
+			</br></br>
+			<input type="submit" value="M1" />
+			<input type="submit" value="M2" />
+			<input type="submit" value="M3" />
+		</form>
+		<h2 id="msg" />
+		<script>
+			function show()
+			{
+				event.preventDefault();
+				
+				let rating = document.getElementById("rating");
+				let msg  = document.getElementById("msg");
+				
+				if(rating.value ==="")
+				{
+					alert("please enter rating");
+					msg.innerHTML="";
+					rating.focus();
+					return;
+				}
+				
+				let r = parseInt(rating.value);
+				
+				if((r < 1) || (r < 5) )
+				{
+					alert("rating should be between 1 to 5");
+					msg.inner.HTML="";
+                                        rating.focus();
+					rating.value="";
+					return;				
+				}
+				
+				let action = document.activeElement.value;
+				let res="";
+				
+				if(action === "M1")
+				{
+					if(r===5)               res="Excelent";
+					else if(r===4)          res="Excelent";
+					else if(r===3)          res="ok";
+					else if(r===2)          res="ok";
+					else                    res="poor";
+					msg.innerHTML ="M1-->" +res;
+				}
+				else if(action === "M2")
+				{
+					if((r===5) || (r===4))              res="Excelent";
+					else if((r===3) || (r===2))          res="ok";
+					else                                res="poor";
+					msg.innerHTML ="M2-->" +res;
+				}
+				else if(action === "M3")
+				{
+					switch(r)  
+					{
+						case 5 : res ="Excelent";   break;
+						case 4 : res ="Excelent";   break;
+						case 3 : res ="ok";   break;
+						case 2 : res ="ok";   break;
+						case 1 : res ="poor";   break;
+
+
+					}            
+					msg.innerHTML ="M3-->" +res;
+				}
+
+				
+			}
+		</script>
+	</body>
+</html>
